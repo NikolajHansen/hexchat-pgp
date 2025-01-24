@@ -14,7 +14,8 @@ CC = gcc
 CFLAGS = -shared -fPIC -I/usr/include/hexchat
 
 # Libraries to link
-LDLIBS = -lgpgme -lhexchat
+#LDLIBS = -lgpgme -lhexchat
+LDLIBS = -lgpgme 
 
 # Source files
 SRC = $(SRC_DIR)/pgp-plugin.c
