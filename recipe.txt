@@ -1,0 +1,25 @@
+Recipe for a c++ based plugin to hexchat - the irc client. 
+
+Name: hexchat-gpg
+Description: Secure chat via GPG on irc via hexchat.
+Language:c++
+
+1. Should use the prefix /GPG for plugin calls
+2. Should have a LRU cache for storing emails as a key and GPG public keys. Put this in its own sourcefile.
+3. If an attempt at finding an email in the LRU cache is not successfull attempt to populate it with a lookup to the pgp public directory.
+4. Should have a management GUI for entering your own email and GPG public key. put this in its own sourcefile
+5. Should be able to load a private key from disk in order to encrypt a message. The location of which should also be part of configuration.
+6. Only attempt to decrypt a message from another user if the message starts with HEXCHAT_GPG
+7. Should have an internal list of emails to query based on the userlist in a channel to see, if the user is on the list of recipients to recieve encrypted messages. put this in its own sourcefile
+8. Commands needed
+	/GPG config : opens the config form for the local users email, public key and location of the private key.
+	/GPG addrecipient <irc handle> <email> : should add a recipient to the recipient list.
+	/GPG deluser <irchandle> : removes a user from the recipient list.
+	/GPG listusers : lists the content to the local user.
+	/GPG on : turns on encryption functionality.
+	/GPG off : turns off encryption functionality
+9. config should be persisted in ~/.config/hexchat
+10. Generate a makefile for building this
+11. Generate a markdown description of the plugin for github
+12. If encryption is turned on only send message to recipients on the recipient list.
+13. if encryption is of turn off all crypto functionalty and go back to vanilla hexchat behaviour.
